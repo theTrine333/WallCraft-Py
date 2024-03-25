@@ -1,0 +1,40 @@
+<SpinnerPopup>:
+    size_hint: None, None
+    size: dp(92), dp(92)
+    auto_dismiss: False
+    BoxLayout:
+        orientation: 'vertical'
+        AnchorLayout:
+            MDSpinner:
+                size_hint: None, None
+                size: dp(46), dp(46)
+
+<ImageCard>:
+    #radius: 24
+    #box_radius: [0, 0, 24, 24]
+    box_color: 1, 1, 1, 0
+    source: root.imageLink
+    size_hint: None, None
+    size: "100dp", "138dp"
+MDScreen:
+    name :'main'
+    MDFloatLayout:
+        MDLabel:
+            text :"WallCraft"
+            halign :"center"
+            pos_hint:{'center_x':.5,'center_y':.97}
+            font_name:'MPoppins'
+            #font_size:"28"
+        MDScrollView:
+            do_scroll_x: True
+            size_hint:1, .88
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            MDGridLayout:
+                cols:3
+                pos_hint:{'center_x':.5}
+                #orientation: "vertical"
+                adaptive_height:True
+                #adaptive_width:True
+                spacing:2
+                padding:30,
+                id:images_box
