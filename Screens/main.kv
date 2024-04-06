@@ -1,0 +1,105 @@
+<SpinnerPopup>:
+    size_hint: None, None
+    size: dp(92), dp(92)
+    auto_dismiss: False
+    BoxLayout:
+        orientation: 'vertical'
+        AnchorLayout:
+            MDSpinner:
+                size_hint: None, None
+                size: dp(46), dp(46)
+
+<CarouselImage>:
+    #radius: 24
+    #box_radius: [0, 0, 24, 24]
+    box_color: 1, 1, 1, 0
+    source: root.imageLink
+    size_hint: None, None
+    size: "120dp", "166dp"
+    MDLabel:
+        text: root.imageTag
+        halign :"center"
+        font_name:'MPoppins'
+        bold: True
+        color: 1, 1, 1, 1
+<ImageCard>:
+    box_color: 1, 1, 1, 0
+    source: root.imageLink
+    size_hint: None, None
+    size: "100dp", "138dp"
+
+MDScreen:
+    name :'main'
+    MDFloatLayout:
+        MDScrollView:
+            # FOR DISABLE y AXIS SCROLL
+            do_scroll_x:False
+            MDGridLayout:
+                cols: 1
+                size_hint_y: None
+                spacing:8
+                adaptive_height:True
+                padding:0,20
+                MDLabel:
+                    text :"WallCraft"
+                    halign :"center"
+                    font_name:'MPoppins'
+                MDLabel:
+                    text :"Select a tag"
+                    padding:10,10
+                    font_name:'MPoppins'
+                    font_size:"10sp"
+                MDScrollView:
+                    size_hint: 1, None
+                    size: self.parent.width, dp(170)
+                    bar_color:1,1,1,0
+                    do_scroll_x: True
+                    do_scroll_y: False
+                    MDBoxLayout:
+                        spacing:10
+                        padding:10
+                        orientation: 'horizontal'
+                        adaptive_width:True
+                        id:gallery_courasel
+                MDBoxLayout:
+                    padding:5,20
+                    adaptive_height:True
+                    orientation: 'horizontal'
+                    canvas.before:
+                        Color:
+                            rgba: 1, 0, 0, 1  # Red color (R,G,B,A)
+                        Line:
+                            rectangle: self.x, self.y, self.width, self.height
+                            width: 2
+                    MDLabel:
+                        text: "Tag : "
+                        font_name:'MPoppins'
+                        width: self.texture_size[0]
+                    MDLabel:
+                        text: app.tag
+                        font_name:'MPoppins'
+                        theme_text_color:"Custom"
+                        width: self.texture_size[0]
+                        bg_color: 0,1,0,1
+                        
+                MDGridLayout:
+                    cols:3
+                    pos_hint:{'center_x':.5}
+                    adaptive_height:True
+                    spacing:2
+                    padding:30,0,0,0
+                    id:images_box
+                MDBoxLayout:
+                    orientation:"vertical"
+                    size_hint: 1, None
+                    height: dp(40)
+                    # canvas.before:
+                    #     Color:
+                    #         rgba: 1, 0, 0, 1  # Red color (R,G,B,A)
+                    #     Line:
+                    #         rectangle: self.x, self.y, self.width, self.height
+                    #         width: 2
+                    MDRaisedButton:
+                        text:"Load More"
+                        pos_hint: {'center_x': .5}
+                        on_press:app.load_more_images()
